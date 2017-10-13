@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         version="3.1">
+
+    <!--Get all users which contains in database-->
+    <servlet>
+        <servlet-name>GetStartPageServlet</servlet-name>
+        <servlet-class>ru.javavision.servlet.GetIndexPageServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetStartPageServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+</web-app>
