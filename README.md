@@ -11,3 +11,4 @@
 4. Registration servlet in web.xml.
 
 5. Plug of apache-tomcat.
+`Preferences -> Application Servers`
