@@ -13,10 +13,13 @@ public class GetIndexPageServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         System.out.println("*************SERVLET IS INIT************");
-        System.out.println("FOR PATH '/' WILL RENDER VIEW   " + index);
+        System.out.println("FOR PATH '/' WILL RENDER VIEW : " + index);
         super.init();
     }
 
+    /**
+     * Multithreading scope.
+     */
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
