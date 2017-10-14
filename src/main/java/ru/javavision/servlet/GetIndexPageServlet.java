@@ -10,9 +10,21 @@ public class GetIndexPageServlet extends HttpServlet {
 
     private static String index = "/WEB-INF/view/index.jsp";
 
+    @Override
+    public void init() throws ServletException {
+        System.out.println("*************SERVLET IS INIT************");
+        System.out.println("FOR PATH '/' WILL RENDER VIEW   " + index);
+        super.init();
+    }
+
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
         req.getRequestDispatcher(index).forward(req, resp);
+    }
+
+    @Override
+    public void destroy() {
+        System.out.println("*************SERVLET IS DESTROY************");
     }
 }
