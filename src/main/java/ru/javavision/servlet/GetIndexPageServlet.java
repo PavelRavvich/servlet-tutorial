@@ -37,6 +37,10 @@ public class GetIndexPageServlet extends HttpServlet {
 
         req.setCharacterEncoding("UTF8");
 
+        if (!requestIsValid(req)) {
+            doGet(req, resp);
+        }
+
         final String name = req.getParameter("name");
         final String age = req.getParameter("age");
 
@@ -45,5 +49,15 @@ public class GetIndexPageServlet extends HttpServlet {
         users.add(user);
 
         doGet(req, resp);
+    }
+
+    private boolean requestIsValid(final HttpServletRequest req) {
+
+        final String name = req.getParameter("name");
+        final String age = req.getParameter("age");
+
+        return name != null && name.length() > 0 &&
+                age != null && age.length() > 0 &&
+                age.matches("[+]?\\d+");
     }
 }
