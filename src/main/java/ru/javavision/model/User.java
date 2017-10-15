@@ -1,5 +1,8 @@
 package ru.javavision.model;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonPropertyOrder({ "id", "name", "age"})
 public class User {
 
     private int id;
@@ -9,6 +12,7 @@ public class User {
     private int age;
 
     public User(int id, String name, int age) {
+        this.id = id;
         this.name = name;
         this.age = age;
     }
