@@ -13,8 +13,6 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class GetIndexPageServlet extends HttpServlet {
 
-    private final static String index = "/WEB-INF/view/index.jsp";
-
     private Map<Integer, User> users;
 
     @Override
@@ -39,6 +37,6 @@ public class GetIndexPageServlet extends HttpServlet {
             throws ServletException, IOException {
 
         req.setAttribute("users", users.values());
-        req.getRequestDispatcher(index).forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/view/index.jsp").forward(req, resp);
     }
 }
