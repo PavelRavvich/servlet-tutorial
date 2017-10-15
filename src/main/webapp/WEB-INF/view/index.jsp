@@ -25,7 +25,7 @@
 
         <form method="get" action="/update">
             <input type="number" hidden name="id" value="${user.id}" />
-            <input type="submit" name="delete" value="Редактированть"/>
+            <input type="submit" value="Редактированть"/>
         </form>
     </ul>
     <hr />

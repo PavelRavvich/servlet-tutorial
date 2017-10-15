@@ -52,6 +52,7 @@ public class UpdateUserServlet extends HttpServlet {
 
         if (Utils.idIsInvalid(id, users)) {
             resp.sendRedirect(req.getContextPath() + "/");
+            return;
         }
 
         final User user = users.get(Integer.parseInt(id));
