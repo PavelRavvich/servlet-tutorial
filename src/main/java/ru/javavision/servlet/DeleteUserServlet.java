@@ -11,9 +11,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class GetIndexPageServlet extends HttpServlet {
-
-    private final static String index = "/WEB-INF/view/index.jsp";
+public class DeleteUserServlet extends HttpServlet {
 
     private Map<Integer, User> users;
 
@@ -29,16 +27,17 @@ public class GetIndexPageServlet extends HttpServlet {
 
             this.users = (ConcurrentHashMap<Integer, User>) users;
         }
-
-        final User user = Utils.createStubUser(1, "Первый", 10);
-        this.users.put(user.getId(), user);
     }
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        req.setAttribute("users", users.values());
-        req.getRequestDispatcher(index).forward(req, resp);
+        req.setCharacterEncoding("UTF-8");
+
+        if (Utils.idNotNumber(req)) resp.sendRedirect(req.getContextPath() + "/");
+
+        users.remove(Integer.valueOf(req.getParameter("id")));
+
+        resp.sendRedirect(req.getContextPath() + "/");
     }
 }

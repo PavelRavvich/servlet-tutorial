@@ -10,12 +10,15 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public class GetIndexPageServlet extends HttpServlet {
+public class AddUserServlet extends HttpServlet {
 
     private final static String index = "/WEB-INF/view/index.jsp";
 
     private Map<Integer, User> users;
+
+    private AtomicInteger id;
 
     @Override
     public void init() throws ServletException {
@@ -30,15 +33,30 @@ public class GetIndexPageServlet extends HttpServlet {
             this.users = (ConcurrentHashMap<Integer, User>) users;
         }
 
-        final User user = Utils.createStubUser(1, "Первый", 10);
-        this.users.put(user.getId(), user);
+        id = new AtomicInteger(2);
+
     }
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        req.setAttribute("users", users.values());
-        req.getRequestDispatcher(index).forward(req, resp);
+        req.setCharacterEncoding("UTF-8");
+
+        if (Utils.additionRequestIsInvalid(req)) {
+            resp.sendRedirect(req.getContextPath() + "/");
+        }
+
+        final String name = req.getParameter("name");
+        final String age = req.getParameter("age");
+
+        final User user = new User();
+        final int id = this.id.getAndIncrement();
+        user.setId(id);
+        user.setAge(Integer.valueOf(age));
+        user.setName(name);
+
+        users.put(id, user);
+
+        resp.sendRedirect(req.getContextPath() + "/");
     }
 }

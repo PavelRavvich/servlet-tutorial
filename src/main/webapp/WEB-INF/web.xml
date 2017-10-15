@@ -4,13 +4,50 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+
+    <!--Index page for app-->
+    <servlet-mapping>
+        <servlet-name>GetStartPageServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
     <servlet>
         <servlet-name>GetStartPageServlet</servlet-name>
         <servlet-class>ru.javavision.servlet.GetIndexPageServlet</servlet-class>
     </servlet>
 
+
+    <!--Addition user-->
     <servlet-mapping>
-        <servlet-name>GetStartPageServlet</servlet-name>
-        <url-pattern>/</url-pattern>
+        <servlet-name>AddUserServlet</servlet-name>
+        <url-pattern>/add_user</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddUserServlet</servlet-name>
+        <servlet-class>ru.javavision.servlet.AddUserServlet</servlet-class>
+    </servlet>
+
+
+    <!--Delete user-->
+    <servlet-mapping>
+        <servlet-name>DeleteUserServlet</servlet-name>
+        <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteUserServlet</servlet-name>
+        <servlet-class>ru.javavision.servlet.DeleteUserServlet</servlet-class>
+    </servlet>
+
+
+    <!--Update user-->
+    <servlet-mapping>
+        <servlet-name>UpdateUserServlet</servlet-name>
+        <url-pattern>/update</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UpdateUserServlet</servlet-name>
+        <servlet-class>ru.javavision.servlet.UpdateUserServlet</servlet-class>
+    </servlet>
 </web-app>

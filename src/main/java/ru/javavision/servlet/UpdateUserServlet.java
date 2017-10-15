@@ -11,9 +11,7 @@ import java.io.IOException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class GetIndexPageServlet extends HttpServlet {
-
-    private final static String index = "/WEB-INF/view/index.jsp";
+public class UpdateUserServlet extends HttpServlet {
 
     private Map<Integer, User> users;
 
@@ -29,16 +27,36 @@ public class GetIndexPageServlet extends HttpServlet {
 
             this.users = (ConcurrentHashMap<Integer, User>) users;
         }
+    }
 
-        final User user = Utils.createStubUser(1, "Первый", 10);
-        this.users.put(user.getId(), user);
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+
+        req.setCharacterEncoding("UTF-8");
+
+        final String id = req.getParameter("id");
+        final String name = req.getParameter("name");
+
+        users.get(Integer.parseInt(id)).setName(name);
+
+        resp.sendRedirect(req.getContextPath() + "/");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
-        req.setAttribute("users", users.values());
-        req.getRequestDispatcher(index).forward(req, resp);
+        final String id = req.getParameter("id");
+
+        if (Utils.idIsInvalid(id, users)) {
+            resp.sendRedirect(req.getContextPath() + "/");
+        }
+
+        final User user = users.get(Integer.parseInt(id));
+        req.setAttribute("user", user);
+
+        req.getRequestDispatcher("/WEB-INF/view/update.jsp")
+                .forward(req, resp);
     }
 }
