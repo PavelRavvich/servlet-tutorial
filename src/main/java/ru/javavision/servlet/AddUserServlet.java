@@ -41,6 +41,7 @@ public class AddUserServlet extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
 
         if (Utils.requestIsValid(req)) {
+
             final String name = req.getParameter("name");
             final String age = req.getParameter("age");
 

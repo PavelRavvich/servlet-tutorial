@@ -38,7 +38,8 @@ public class UpdateUserServlet extends HttpServlet {
         final String id = req.getParameter("id");
         final String name = req.getParameter("name");
 
-        users.get(Integer.parseInt(id)).setName(name);
+        final User user = users.get(Integer.parseInt(id));
+        user.setName(name);
 
         resp.sendRedirect(req.getContextPath() + "/");
     }

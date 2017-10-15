@@ -13,11 +13,11 @@ import java.util.Map;
  */
 public class Utils {
 
-    public static boolean idNotNumber(HttpServletRequest request) {
+    public static boolean idIsNumber(HttpServletRequest request) {
         final String id = request.getParameter("id");
-        return !(id != null &&
+        return id != null &&
                 (id.length() > 0) &&
-                id.matches("[+]?\\d+"));
+                id.matches("[+]?\\d+");
     }
 
     public static boolean requestIsValid(HttpServletRequest request) {

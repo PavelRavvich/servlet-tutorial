@@ -34,9 +34,9 @@ public class DeleteUserServlet extends HttpServlet {
 
         req.setCharacterEncoding("UTF-8");
 
-        if (Utils.idNotNumber(req)) resp.sendRedirect(req.getContextPath() + "/");
-
-        users.remove(Integer.valueOf(req.getParameter("id")));
+        if (Utils.idIsNumber(req)) {
+            users.remove(Integer.valueOf(req.getParameter("id")));
+        }
 
         resp.sendRedirect(req.getContextPath() + "/");
     }
