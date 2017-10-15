@@ -14,9 +14,9 @@
 <c:forEach var="user" items="${requestScope.users}">
     <ul>
 
-        <li>Id: <c:out value="${user.name}"/></li>
+        <li>Имя: <c:out value="${user.name}"/></li>
 
-        <li>Name: <c:out value="${user.age}"/></li>
+        <li>Возраст: <c:out value="${user.age}"/></li>
     </ul>
     <hr />
 
