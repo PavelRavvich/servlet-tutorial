@@ -14,8 +14,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class AddUserServlet extends HttpServlet {
 
-    private final static String index = "/WEB-INF/view/index.jsp";
-
     private Map<Integer, User> users;
 
     private AtomicInteger id;
@@ -42,20 +40,18 @@ public class AddUserServlet extends HttpServlet {
 
         req.setCharacterEncoding("UTF-8");
 
-        if (Utils.additionRequestIsInvalid(req)) {
-            resp.sendRedirect(req.getContextPath() + "/");
+        if (Utils.requestIsValid(req)) {
+            final String name = req.getParameter("name");
+            final String age = req.getParameter("age");
+
+            final User user = new User();
+            final int id = this.id.getAndIncrement();
+            user.setId(id);
+            user.setAge(Integer.valueOf(age));
+            user.setName(name);
+
+            users.put(id, user);
         }
-
-        final String name = req.getParameter("name");
-        final String age = req.getParameter("age");
-
-        final User user = new User();
-        final int id = this.id.getAndIncrement();
-        user.setId(id);
-        user.setAge(Integer.valueOf(age));
-        user.setName(name);
-
-        users.put(id, user);
 
         resp.sendRedirect(req.getContextPath() + "/");
     }

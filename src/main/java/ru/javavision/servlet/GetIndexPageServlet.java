@@ -1,7 +1,6 @@
 package ru.javavision.servlet;
 
 import ru.javavision.model.User;
-import ru.javavision.util.Utils;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -27,9 +26,6 @@ public class GetIndexPageServlet extends HttpServlet {
 
             this.users = (ConcurrentHashMap<Integer, User>) users;
         }
-
-        final User user = Utils.createStubUser(1, "Первый", 10);
-        this.users.put(user.getId(), user);
     }
 
     @Override

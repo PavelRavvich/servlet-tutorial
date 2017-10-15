@@ -20,13 +20,13 @@ public class Utils {
                 id.matches("[+]?\\d+"));
     }
 
-    public static boolean additionRequestIsInvalid(HttpServletRequest request) {
+    public static boolean requestIsValid(HttpServletRequest request) {
         final String name = request.getParameter("name");
         final String age = request.getParameter("age");
 
-        return !(name != null && name.length() > 0 &&
+        return name != null && name.length() > 0 &&
                 age != null && age.length() > 0 &&
-                age.matches("[+]?\\d+"));
+                age.matches("[+]?\\d+");
     }
 
     public static User createStubUser(final int id,
