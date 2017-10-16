@@ -4,6 +4,8 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+
+    <!--Base page servlet-->
     <servlet>
         <servlet-name>GetStartPageServlet</servlet-name>
         <servlet-class>ru.javavision.servlet.GetIndexPageServlet</servlet-class>
@@ -13,4 +15,28 @@
         <servlet-name>GetStartPageServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+
+    <!--Encoding filter UTF-8 for all requests-->
+    <filter>
+        <filter-name>EncodingRequestFilter</filter-name>
+        <filter-class>ru.javavision.servlet.EncodingRequestFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>EncodingRequestFilter</filter-name>
+        <url-pattern>/</url-pattern>
+    </filter-mapping>
+
+
+    <!--Encoding filter UTF-8 for all requests-->
+    <filter>
+        <filter-name>EncodingResponseFilter</filter-name>
+        <filter-class>ru.javavision.servlet.EncodingResponseFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>EncodingResponseFilter</filter-name>
+        <url-pattern>/</url-pattern>
+    </filter-mapping>
 </web-app>

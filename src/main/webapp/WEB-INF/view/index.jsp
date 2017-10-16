@@ -11,7 +11,12 @@
 </head>
 <body>
 
-    Hello from Java Vision!
+<p>Hello from Java Vision!</p>
+<br />
+<form method="post" action="">
+    <input type="text" name="data" />
+    <input type="submit" value="Send" />
+</form>
 
 </body>
 </html>

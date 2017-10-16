@@ -15,4 +15,14 @@ public class GetIndexPageServlet extends HttpServlet {
 
         req.getRequestDispatcher(index).forward(req, resp);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
+
+
+        final String data = req.getParameter("data");
+
+        System.out.println(data);
+    }
 }
