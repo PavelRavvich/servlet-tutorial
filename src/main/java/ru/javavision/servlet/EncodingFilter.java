@@ -3,7 +3,7 @@ package ru.javavision.servlet;
 import javax.servlet.*;
 import java.io.IOException;
 
-public class EncodingRequestFilter implements Filter {
+public class EncodingFilter implements Filter {
 
     @Override
     public void destroy() {

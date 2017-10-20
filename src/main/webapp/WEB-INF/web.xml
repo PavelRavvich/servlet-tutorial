@@ -17,10 +17,10 @@
     </servlet-mapping>
 
 
-    <!--Encoding filter UTF-8 for all requests-->
+    <!--Encoding filter UTF-8 -->
     <filter>
         <filter-name>EncodingRequestFilter</filter-name>
-        <filter-class>ru.javavision.servlet.EncodingRequestFilter</filter-class>
+        <filter-class>ru.javavision.servlet.EncodingFilter</filter-class>
     </filter>
 
     <filter-mapping>
@@ -28,15 +28,4 @@
         <url-pattern>/</url-pattern>
     </filter-mapping>
 
-
-    <!--Encoding filter UTF-8 for all requests-->
-    <filter>
-        <filter-name>EncodingResponseFilter</filter-name>
-        <filter-class>ru.javavision.servlet.EncodingResponseFilter</filter-class>
-    </filter>
-
-    <filter-mapping>
-        <filter-name>EncodingResponseFilter</filter-name>
-        <url-pattern>/</url-pattern>
-    </filter-mapping>
 </web-app>

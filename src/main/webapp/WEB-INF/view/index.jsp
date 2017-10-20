@@ -11,10 +11,14 @@
 </head>
 <body>
 
-<p>Hello from Java Vision!</p>
+<h2>Hello from Java Vision!</h2>
+<br />
+
+<p><c:out value = "${requestScope.data}"/></p>
+
 <br />
 <form method="post" action="">
-    <input type="text" name="data" />
+    <input type="text" name="massage" />
     <input type="submit" value="Send" />
 </form>
 
