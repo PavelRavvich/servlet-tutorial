@@ -6,23 +6,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class GetIndexPageServlet extends HttpServlet {
 
-    private AtomicBoolean userIsNew;
-
-    private String indexPage;
-
-    @Override
-    public void init() throws ServletException {
-        userIsNew = new AtomicBoolean(true);
-        indexPage = "/WEB-INF/view/index.jsp";
-    }
+    private final static String indexPage = "/WEB-INF/view/index.jsp";
 
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        System.out.println(req.getSession(false));
+
+
+        final HttpSession session = req.getSession();
+
+        final String state = (String) session.getAttribute("state");
+
+        if (state != null){
+            //Set new session state to request for view.
+            req.setAttribute("dataForView", session.getAttribute("state"));
+        }
+
         req.getRequestDispatcher(indexPage).forward(req, resp);
     }
 
@@ -31,22 +32,23 @@ public class GetIndexPageServlet extends HttpServlet {
             throws ServletException, IOException {
 
 
-        final String massage = req.getParameter("massage");
+        //Extract of data from user's input.
+        final String dataFromUser = req.getParameter("data");
 
-        HttpSession session = req.getSession(false);
+        //Get session from request.
+        final HttpSession session = req.getSession();
 
-        if (session == null) {
-            session = req.getSession(true);
-            session.setAttribute("data", "Создание сессиию. Если это сообщение выведется повторно значит сессия уже существует");
+        //Get current state from session.
+        final String currentState = (String) session.getAttribute("state");
+
+        if (currentState != null) {
+            //Update old state value to new.
+            session.setAttribute("state", currentState + " : " + dataFromUser);
+        } else {
+            //Init state value.
+            session.setAttribute("state", dataFromUser);
         }
 
-        final String store = session.getAttribute("data") + massage + "\n";
-
-        session.setAttribute("data", store);
-
-
-        req.setAttribute("data", store);
-
-        req.getRequestDispatcher(indexPage).forward(req, resp);
+        doGet(req, resp);
     }
 }

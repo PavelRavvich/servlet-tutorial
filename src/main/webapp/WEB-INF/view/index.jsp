@@ -14,11 +14,11 @@
 <h2>Hello from Java Vision!</h2>
 <br />
 
-<p><c:out value = "${requestScope.data}"/></p>
+<p><c:out value = "${requestScope.dataForView}"/></p>
 
 <br />
 <form method="post" action="">
-    <input type="text" name="massage" />
+    <input type="text" name="data" />
     <input type="submit" value="Send" />
 </form>
 
