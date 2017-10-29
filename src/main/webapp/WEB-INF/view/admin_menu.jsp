@@ -11,6 +11,6 @@
 <body>
 
 <h1>Hello ADMIN!</h1>
-
+<a href="/logout">Logout</a>
 </body>
 </html>
