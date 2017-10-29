@@ -6,11 +6,22 @@
 
     <servlet>
         <servlet-name>GetStartPageServlet</servlet-name>
-        <servlet-class>ru.javavision.servlet.GetIndexPageServlet</servlet-class>
+        <servlet-class>ru.javavision.servlets.servlet.LoginServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>GetStartPageServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <!--filter check exist session for sign in-->
+    <filter>
+        <filter-name>AuthFilter</filter-name>
+        <filter-class>ru.javavision.servlets.filter.AuthFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>AuthFilter</filter-name>
+        <url-pattern>/</url-pattern>
+    </filter-mapping>
 </web-app>

@@ -1,17 +1,16 @@
 <%--
   Author: Pavel Ravvich.
-  Date: 14.10.17.
+  Date: 29/10/2017.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
-
+    <title>ADMIN</title>
 </head>
 <body>
 
-    Hello from Java Vision!
+<h1>Hello ADMIN!</h1>
 
 </body>
 </html>

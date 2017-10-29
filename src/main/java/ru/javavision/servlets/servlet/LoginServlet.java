@@ -1,4 +1,4 @@
-package ru.javavision.servlet;
+package ru.javavision.servlets.servlet;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class GetIndexPageServlet extends HttpServlet {
+public class LoginServlet extends HttpServlet {
 
     private static String index = "/WEB-INF/view/index.jsp";
 
@@ -15,4 +15,6 @@ public class GetIndexPageServlet extends HttpServlet {
 
         req.getRequestDispatcher(index).forward(req, resp);
     }
+
+
 }
