@@ -1,5 +1,6 @@
 package ru.javavision.servlets;
 
+
 import ru.javavision.dao.UserDAO;
 import ru.javavision.model.User;
 
@@ -24,6 +25,8 @@ public class ContextListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
+
+        dao = new AtomicReference<>(new UserDAO());
 
         dao.get().add(new User(1, "Pavel", "1", ADMIN));
         dao.get().add(new User(2, "Egor", "1", USER));
