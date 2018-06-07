@@ -16,7 +16,7 @@
 
 <br />
 
-<form method="post" action="/update">
+<form method="post" action="<c:url value='/update'/>">
 
     <label>Новое имя: <input type="text" name="name" /></label><br>
 
