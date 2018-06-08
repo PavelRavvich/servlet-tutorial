@@ -1,11 +1,12 @@
 package ru.javavision.servlets.servlet;
 
+import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 
 /**
  * Logout.
@@ -24,7 +25,7 @@ public class LogoutServlet extends HttpServlet {
         session.removeAttribute("login");
         session.removeAttribute("role");
 
-        resp.sendRedirect("/");
+        resp.sendRedirect(super.getServletContext().getContextPath());
     }
 
 }
