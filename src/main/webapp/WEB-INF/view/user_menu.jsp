@@ -12,6 +12,6 @@
 <body>
 
 <h1>Hello USER!</h1>
-<a href="/logout">Logout</a>
+<a href="<c:url value="/logout"/>">Logout</a>
 </body>
 </html>
